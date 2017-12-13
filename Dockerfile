@@ -1,7 +1,5 @@
-FROM gitlab/gitlab-runner
+FROM gitlab/gitlab-runner:alpine
 
-RUN apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get install -y xz-utils && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache xz-utils \
+    # Clear cache
+    && rm -rf /var/cache/apk/* 
